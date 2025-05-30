@@ -44,7 +44,7 @@ App.vue:
 ```vue
 <script setup>
 import Plot from '@yamakox/vue3-plotly'
-import { ref, onMounted } from 'vue'
+import { ref } from 'vue'
 
 const plot1 = ref()
 
@@ -59,17 +59,6 @@ const layout = {
 function onHover(event) {
   console.log('Hovered:', event)
 }
-
-onMounted(async () => {
-  setTimeout(async () => {
-    try {
-      const data2 = [
-        { x: [4, 5, 6], y: [40, 50, 60], type: 'scatter', mode: 'lines+markers', name: 'Sample2' }
-      ]
-      plot1.value?.addTraces(data2)
-    } catch(error) {console.log(error)}
-  }, 1000)
-})
 </script>
 
 <template>
@@ -108,7 +97,7 @@ onMounted(async () => {
       const data2: Partial<Plotly.Data>[] = [
         { x: [4, 5, 6], y: [40, 50, 60], type: 'scatter', mode: 'lines+markers', name: 'Sample2' }
       ]
-      plot1.value?.addTraces(data2)
+      await plot1.value?.addTraces(data2)
     } catch(error) {console.log(error)}
   }, 1000)
 })
@@ -185,7 +174,7 @@ These events can be used with kebab-case Vue bindings such as `@hover`, `@click`
 
 ## Exposed
 
-These methods are available via `ref` and `defineExpose()`:
+These method types are available via `useTemplateRef` and `ComponentExposed`:
 
 ```ts
 declare function relayout(layout: Partial<Plotly.Layout>): Promise<Plotly.PlotlyHTMLElement>;
