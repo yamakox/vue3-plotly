@@ -42,6 +42,46 @@ npm install --save-dev @types/plotly.js
 App.vue:
 
 ```vue
+<script setup>
+import Plot from '@yamakox/vue3-plotly'
+import { ref, onMounted } from 'vue'
+
+const plot1 = ref()
+
+const data = [
+  { x: [1, 2, 3], y: [10, 20, 30], type: 'scatter', mode: 'lines+markers', name: 'Sample' }
+]
+
+const layout = {
+  title: { text: 'My First Plotly Chart', font: { size: 20 } }, width: 600, height: 400
+}
+
+function onHover(event) {
+  console.log('Hovered:', event)
+}
+
+onMounted(async () => {
+  setTimeout(async () => {
+    try {
+      const data2 = [
+        { x: [4, 5, 6], y: [40, 50, 60], type: 'scatter', mode: 'lines+markers', name: 'Sample2' }
+      ]
+      plot1.value?.addTraces(data2)
+    } catch(error) {console.log(error)}
+  }, 1000)
+})
+</script>
+
+<template>
+  <plot ref="plot1" :data="data" :layout="layout" @hover="onHover" />
+</template>
+```
+
+### TypeScript Example
+
+App.vue:
+
+```vue
 <script setup lang="ts">
 import Plot from '@yamakox/vue3-plotly'
 import Plotly from 'plotly.js-dist-min'
@@ -87,6 +127,10 @@ declare module 'plotly.js-dist-min' {
   export default Plotly
 }
 ```
+
+IDE shows the signature help of the plot component.
+
+<img src="./signature-help.png" alt="signature help" style="width: 70%; border: 1px solid #ccc" />
 
 ---
 
