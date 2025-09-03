@@ -75,16 +75,21 @@ App.vue:
 import Plot from '@yamakox/vue3-plotly'
 import Plotly from 'plotly.js-dist-min'
 import { useTemplateRef, onMounted } from 'vue'
-import type { ComponentExposed } from 'vue-component-type-helpers'
 
+// NOTE: npm install --save-dev vue-component-type-helpers
+import type { ComponentExposed } from 'vue-component-type-helpers'
 const plot1 = useTemplateRef<ComponentExposed<typeof Plot>|null>('plot1')
 
-const data: Partial<Plotly.Data>[] = [
-  { x: [1, 2, 3], y: [10, 20, 30], type: 'scatter', mode: 'lines+markers', name: 'Sample' }
+const x = Array.from({ length: 21 }, (_, i) => 2 * Math.PI * i / 20)
+const y = x.map(x => Math.sin(x))
+
+const data: Plotly.Data[] = [
+  { x: x, y: y, type: 'scatter', mode: 'lines+markers', name: 'Sine Curve' }
 ]
 
 const layout: Partial<Plotly.Layout> = {
-  title: { text: 'My First Plotly Chart', font: { size: 20 } }, width: 600, height: 400
+  title: { text: 'My First Plotly Chart', font: { size: 20 } }, 
+  width: 600, height: 400, showlegend: false,
 }
 
 function onHover(event: Plotly.PlotMouseEvent) {
@@ -94,8 +99,9 @@ function onHover(event: Plotly.PlotMouseEvent) {
 onMounted(async () => {
   setTimeout(async () => {
     try {
-      const data2: Partial<Plotly.Data>[] = [
-        { x: [4, 5, 6], y: [40, 50, 60], type: 'scatter', mode: 'lines+markers', name: 'Sample2' }
+      const y2 = x.map(x => Math.cos(x))
+      const data2: Plotly.Data[] = [
+        { x: x, y: y2, type: 'scatter', mode: 'lines+markers', name: 'Cosine Curve' }
       ]
       await plot1.value?.addTraces(data2)
     } catch(error) {console.log(error)}
