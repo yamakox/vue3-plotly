@@ -15,7 +15,7 @@ export default defineConfig({
         globals: {
           vue: 'Vue',
           'plotly.js-dist-min': 'Plotly'
-        }   
+        }
       }
     }
   },
