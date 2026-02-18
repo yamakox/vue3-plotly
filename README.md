@@ -30,7 +30,7 @@ npm install --save @yamakox/vue3-plotly plotly.js-dist-min
 For TypeScript users, you can install type definitions for `plotly.js-dist-min`:
 
 ```bash
-npm install --save-dev @types/plotly.js
+npm install --save-dev @types/plotly.js-dist-min
 ```
 
 ---
@@ -112,15 +112,6 @@ onMounted(async () => {
 <template>
   <plot ref="plot1" :data="data" :layout="layout" @hover="onHover" />
 </template>
-```
-
-types/plotly.d.ts:
-
-```ts
-declare module 'plotly.js-dist-min' {
-  import Plotly from 'plotly.js'
-  export default Plotly
-}
 ```
 
 IDE shows the signature help of the plot component.

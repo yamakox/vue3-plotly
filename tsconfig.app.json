@@ -16,5 +16,5 @@
     "resolveJsonModule": true,
     "baseUrl": "."
   },
-  "include": ["src/**/*", "index.ts", "vite-env.d.ts", "plotly-shim.d.ts"]
+  "include": ["src/**/*", "index.ts", "vite-env.d.ts"]
 }
