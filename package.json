@@ -1,6 +1,6 @@
 {
   "name": "@yamakox/vue3-plotly",
-  "version": "0.2.7",
+  "version": "0.2.9",
   "description": "A Vue 3 wrapper component for Plotly.js",
   "author": "yamakox",
   "license": "MIT",
@@ -34,7 +34,7 @@
   "scripts": {
     "prepublishOnly": "rimraf dist && npm run build",
     "build": "vite build && npm run build:types",
-    "build:types": "vue-tsc -p tsconfig.app.json --declaration --emitDeclarationOnly --outDir dist"
+    "build:types": "vue-tsc --declaration --emitDeclarationOnly --outDir dist"
   },
   "peerDependencies": {
     "plotly.js-dist-min": "^3.0.0",
