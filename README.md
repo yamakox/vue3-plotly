@@ -9,13 +9,14 @@ A Vue 3 wrapper component for [Plotly.js](https://plotly.com/javascript/) charts
 
 ## Features
 
-- Lightweight Vue 3 wrapper for Plotly.js
+- Lightweight Vue 3 wrapper for [Plotly.js](https://plotly.com/javascript/) ([Documentation](https://plotly.com/javascript/reference/index/))
   - Full TypeScript support with type definitions
   - Compatible with Plotly.js v3+
   - Supports Plotly.js methods and events
   - Reactive data binding with Vue 3's Composition API
   - Easy integration with existing Vue 3 projects
   - Zero additional dependencies (Plotly.js is peer dependency)
+  - **NEW**: Supports Astro's SSG pages (with `client:only` directive)
 
 ---
 
@@ -117,6 +118,31 @@ onMounted(async () => {
 IDE shows the signature help of the plot component.
 
 <img src="./signature-help.png" alt="signature help" style="width: 70%; border: 1px solid #ccc" />
+
+### Astro Example
+
+`Plot` now supports embedding in Astro SSG pages using the `client:only="vue"` directive (since v0.3.0).
+
+```astro
+---
+import Plot from '@yamakox/vue3-plotly'
+
+const x = Array.from({ length: 21 }, (_, i) => 2 * Math.PI * i / 20);
+const y1 = x.map(x => Math.sin(x));
+const y2 = x.map(x => Math.cos(x));
+const data = [
+  { x: x, y: y1, type: 'scatter', mode: 'lines+markers', name: 'Sine Curve' },
+  { x: x, y: y2, type: 'scatter', mode: 'lines+markers', name: 'Cosine Curve' }
+];
+const layout = {
+  title: { text: 'Plotly Demo on Astro', font: { size: 20 } }, 
+  width: 600, height: 300, showlegend: true,
+  margin: { t: 80, r: 30, b: 30, l: 50 }, 
+}
+---
+
+<Plot client:only="vue" data={data} layout={layout} />
+```
 
 ---
 
