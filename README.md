@@ -11,12 +11,12 @@ A Vue 3 wrapper component for [Plotly.js](https://plotly.com/javascript/) charts
 
 - Lightweight Vue 3 wrapper for [Plotly.js](https://plotly.com/javascript/) ([Documentation](https://plotly.com/javascript/reference/index/))
   - Full TypeScript support with type definitions
-  - Compatible with Plotly.js v3+
+  - **NEW**: Compatible with Plotly.js v4+
   - Supports Plotly.js methods and events
   - Reactive data binding with Vue 3's Composition API
   - Easy integration with existing Vue 3 projects
   - Zero additional dependencies (Plotly.js is peer dependency)
-  - **NEW**: Supports Astro's SSG pages (with `client:only` directive)
+  - Supports Astro's SSG pages (with `client:only` directive)
 
 ---
 
@@ -178,7 +178,6 @@ These events can be used with kebab-case Vue bindings such as `@hover`, `@click`
 | slider-end             | plotly_sliderend              |
 | slider-start           | plotly_sliderstart            |
 | sunburst-click         | plotly_sunburstclick          |
-| event                  | plotly_event                  |
 | before-plot            | plotly_beforeplot             |
 | after-export           | plotly_afterexport            |
 | after-plot             | plotly_afterplot              |

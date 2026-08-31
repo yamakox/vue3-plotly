@@ -7,16 +7,16 @@ export default defineConfig({
     lib: {
       entry: 'index.ts',
       name: 'Vue3Plotly',
-      fileName: () => 'index.js'
+      fileName: () => 'index.js',
     },
     rollupOptions: {
       external: ['vue', 'plotly.js-dist-min'],
       output: {
         globals: {
           vue: 'Vue',
-          'plotly.js-dist-min': 'Plotly'
-        }
-      }
-    }
+          'plotly.js-dist-min': 'Plotly',
+        },
+      },
+    },
   },
 })

@@ -188,7 +188,6 @@ const emit = defineEmits<{
   'slider-end': [event: Plotly.SliderEndEvent]
   'slider-start': [event: Plotly.SliderStartEvent]
   'sunburst-click': [event: Plotly.SunburstClickEvent]
-  event: [data: any]
   'before-plot': [
     event: Plotly.BeforePlotEvent,
     returnValues: CancellableEventResult,
@@ -342,10 +341,6 @@ async function setupPlot() {
             emit('sunburst-click', event)
           },
         )
-        plotlyHTMLElement.on('plotly_event', (event: any) => {
-          debugLog('plotly_event', event)
-          emit('event', event)
-        })
         plotlyHTMLElement.on(
           'plotly_beforeplot',
           (event: Plotly.BeforePlotEvent) => {
