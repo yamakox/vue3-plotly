@@ -1,6 +1,6 @@
 {
   "name": "@yamakox/vue3-plotly",
-  "version": "0.4.0",
+  "version": "0.4.1",
   "type": "module",
   "description": "A Vue 3 wrapper component for Plotly.js",
   "author": "yamakox",
